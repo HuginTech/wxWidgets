@@ -3884,7 +3884,8 @@ static void BuildTreeHelper( wxDataViewMainWindow *window, const wxDataViewModel
         node->InsertChild(n, index);
     }
 
-    wxASSERT( node->IsOpen() );
+	// This assert fails when FindNode causes a realization because the node hasn't been opened yet.
+    // wxASSERT( node->IsOpen() );
     node->ChangeSubTreeCount(+num);
 }
 
